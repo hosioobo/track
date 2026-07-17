@@ -1,0 +1,4 @@
+interface:
+  display_name: "TRACK · 트랙"
+  short_description: "개발지도를 따라 작업과 세션을 끝까지 조율합니다"
+  default_prompt: "Use $track to build a living development map, assign the right sessions, and follow the work to completion."

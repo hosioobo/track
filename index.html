@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Track separates what can move together, what must happen first, and what should wait—so complex projects finish with less waiting and rework.">
+    <meta name="theme-color" content="#dce7e5">
+    <title>Track — Track the work. Finish what you started.</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23dce7e5'/%3E%3Cpath d='M9 35h12V21H9zm17 0h12V10H26zm17 0h12V25H43z' fill='%2314292f'/%3E%3Cpath d='M26 35h12V10H26z' fill='%23d94b2b'/%3E%3C/svg%3E">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Track — Track the work. Finish what you started.">
+    <meta property="og:description" content="Move independent work together, unlock dependent work at the right time, and finish complex projects with less waiting and rework.">
+    <style>
+      :root {
+        --ink: #14292f;
+        --muted: #526a70;
+        --field: #dce7e5;
+        --paper: #f7faf9;
+        --blue: #2949ba;
+        --orange: #d94b2b;
+        --yellow: #f1c44b;
+        --line: #8fa7a5;
+        --dark-line: #5c7479;
+        --display: "Arial Narrow", "Avenir Next Condensed", "Roboto Condensed", sans-serif;
+        --body: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(20, 41, 47, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(20, 41, 47, 0.05) 1px, transparent 1px),
+          var(--field);
+        background-size: 28px 28px;
+        font-family: var(--body);
+        line-height: 1.55;
+      }
+
+      a { color: inherit; }
+      a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+      code { font-family: var(--mono); }
+
+      .shell {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--dark-line);
+        background: rgba(220, 231, 229, 0.94);
+        backdrop-filter: blur(12px);
+      }
+
+      nav {
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        font: 700 0.76rem var(--mono);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+      .brand-mark { width: 34px; height: 14px; display: inline-grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+      .brand-mark i { display: block; background: var(--ink); }
+      .brand-mark i:nth-child(2) { background: var(--orange); transform: translateY(-5px); }
+      .nav-links { display: flex; gap: 22px; }
+      .nav-links a { text-underline-offset: 5px; }
+
+      .hero {
+        position: relative;
+        isolation: isolate;
+        min-height: min(820px, calc(100vh - 68px));
+        padding: clamp(72px, 10vw, 128px) 0 72px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+        gap: clamp(40px, 6vw, 84px);
+        align-items: end;
+      }
+
+      .hero-mark {
+        position: absolute;
+        inset: 38px -5vw 46px 38%;
+        z-index: -1;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(70px, 1fr));
+        gap: clamp(12px, 2.4vw, 34px);
+        align-items: end;
+        pointer-events: none;
+      }
+
+      .hero-mark i {
+        display: block;
+        height: 47%;
+        border-top: 12px solid var(--ink);
+        background: rgba(20, 41, 47, 0.07);
+      }
+
+      .hero-mark i:nth-child(2) {
+        height: 91%;
+        border-color: var(--orange);
+        background: rgba(217, 75, 43, 0.11);
+      }
+
+      .hero-mark i:nth-child(3) {
+        height: 66%;
+        border-color: var(--blue);
+        background: rgba(41, 73, 186, 0.08);
+      }
+
+      .hero-copy, .dispatch { position: relative; z-index: 1; }
+
+      .eyebrow, .label {
+        margin: 0 0 18px;
+        color: var(--blue);
+        font: 800 0.73rem var(--mono);
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        max-width: 830px;
+        margin-bottom: 28px;
+        font: 900 clamp(4rem, 8.2vw, 7.7rem)/0.8 var(--display);
+        letter-spacing: -0.06em;
+        text-transform: uppercase;
+      }
+
+      h1 span { display: block; color: var(--orange); }
+      .lead { max-width: 690px; margin-bottom: 30px; font-size: clamp(1.12rem, 2vw, 1.45rem); line-height: 1.42; }
+
+      .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+      .button {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 18px;
+        border: 1px solid var(--ink);
+        background: var(--yellow);
+        box-shadow: 4px 4px 0 var(--ink);
+        font: 800 0.78rem var(--mono);
+        text-decoration: none;
+      }
+      .button.secondary { background: transparent; box-shadow: none; }
+      .button:hover { transform: translate(1px, 1px); box-shadow: 3px 3px 0 var(--ink); }
+      .button.secondary:hover { box-shadow: none; background: var(--paper); }
+
+      .dispatch {
+        border: 1px solid var(--ink);
+        background: var(--paper);
+        box-shadow: 10px 10px 0 rgba(41, 73, 186, 0.18);
+      }
+
+      .dispatch-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 14px 17px;
+        border-bottom: 1px solid var(--ink);
+        font: 800 0.68rem var(--mono);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .dispatch-head span:last-child { color: var(--orange); }
+
+      .lane {
+        display: grid;
+        grid-template-columns: 62px 1fr;
+        gap: 16px;
+        padding: 19px 17px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .lane:last-child { border-bottom: 0; }
+      .lane > b { color: var(--blue); font: 800 0.68rem/1.5 var(--mono); text-transform: uppercase; }
+      .lane:nth-child(4) > b { color: var(--muted); }
+      .lane strong { display: block; margin-bottom: 3px; font-size: 0.95rem; line-height: 1.3; }
+      .lane small { display: block; color: var(--muted); font: 0.72rem/1.45 var(--mono); }
+
+      .benefits {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-bottom: 88px;
+        border-block: 1px solid var(--ink);
+      }
+
+      .benefit { min-height: 136px; padding: 24px 26px; }
+      .benefit + .benefit { border-left: 1px solid var(--ink); }
+      .benefit b { display: block; margin-bottom: 28px; color: var(--blue); font: 800 0.7rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+      .benefit p { max-width: 260px; margin-bottom: 0; font: 800 clamp(1.18rem, 2vw, 1.55rem)/1.12 var(--display); text-transform: uppercase; }
+
+      section { padding: 88px 0; border-top: 1px solid var(--dark-line); }
+      .section-head { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 36px; margin-bottom: 44px; }
+      .section-head h2 { max-width: 780px; margin: 0; font: 850 clamp(2.6rem, 6vw, 5.3rem)/0.9 var(--display); letter-spacing: -0.04em; text-transform: uppercase; }
+
+      .principles { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--dark-line); background: var(--dark-line); gap: 1px; }
+      .principle { min-height: 250px; padding: 27px; background: var(--paper); }
+      .principle b { display: block; margin-bottom: 48px; color: var(--orange); font: 800 0.75rem var(--mono); }
+      .principle h3 { max-width: 230px; margin-bottom: 14px; font: 800 1.65rem/1.05 var(--display); text-transform: uppercase; }
+      .principle p { margin-bottom: 0; color: var(--muted); }
+
+      .example-grid { display: grid; grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+      .prompt {
+        position: sticky;
+        top: 96px;
+        padding: 24px;
+        border-left: 5px solid var(--orange);
+        background: var(--ink);
+        color: var(--paper);
+        font: 0.86rem/1.75 var(--mono);
+      }
+      .prompt strong { display: block; margin-bottom: 13px; color: var(--yellow); text-transform: uppercase; }
+
+      .map-panel { min-width: 0; border: 1px solid var(--ink); background: var(--paper); }
+      .map-toolbar { display: flex; justify-content: space-between; gap: 16px; padding: 13px 16px; border-bottom: 1px solid var(--line); font: 700 0.68rem var(--mono); text-transform: uppercase; }
+      .map-toolbar .map-mode, .map-toolbar .map-scroll-hint { color: var(--orange); }
+      .map-scroll-hint { display: none; }
+      .diagram-wrap { min-height: 520px; display: grid; place-items: center; padding: clamp(16px, 4vw, 44px); overflow-x: auto; }
+      pre.mermaid { width: 100%; margin: 0; color: var(--ink); background: transparent; font-family: var(--mono); }
+      .diagram-wrap svg { max-width: 100% !important; height: auto; }
+      .map-note { margin: 0; padding: 18px 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+
+      .gate-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; }
+      .gate-copy { padding-right: 5vw; }
+      .gate-copy p { max-width: 650px; font-size: 1.15rem; }
+      .gate-list { margin: 0; padding: 0; border-top: 1px solid var(--ink); list-style: none; }
+      .gate-list li { display: grid; grid-template-columns: 88px 1fr; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--ink); }
+      .gate-list b { color: var(--blue); font: 800 0.76rem var(--mono); text-transform: uppercase; }
+
+      .install { padding: clamp(26px, 5vw, 52px); border: 1px solid var(--ink); background: var(--blue); color: white; }
+      .install .eyebrow { color: var(--yellow); }
+      .install h2 { max-width: 770px; margin-bottom: 26px; font: 850 clamp(2.8rem, 7vw, 6.2rem)/0.86 var(--display); letter-spacing: -0.04em; text-transform: uppercase; }
+      .install pre { margin: 0; padding: 18px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.42); background: rgba(7, 18, 48, 0.35); color: white; font: 0.83rem/1.65 var(--mono); }
+
+      footer { padding: 24px 0; border-top: 1px solid var(--dark-line); font: 0.72rem var(--mono); }
+      footer .shell { display: flex; justify-content: space-between; gap: 20px; }
+
+      @media (max-width: 820px) {
+        .hero, .example-grid, .gate-grid { grid-template-columns: 1fr; }
+        .hero { min-height: auto; }
+        .hero-mark { inset: 30px 0 28px 26%; opacity: 0.72; }
+        .dispatch { max-width: 520px; }
+        .benefits { grid-template-columns: 1fr; }
+        .benefit { min-height: 0; display: grid; grid-template-columns: 130px 1fr; gap: 18px; align-items: baseline; }
+        .benefit + .benefit { border-left: 0; border-top: 1px solid var(--ink); }
+        .benefit b { margin: 0; }
+        .section-head { grid-template-columns: 1fr; gap: 12px; }
+        .principles { grid-template-columns: 1fr; }
+        .principle { min-height: auto; }
+        .principle b { margin-bottom: 24px; }
+        .prompt { position: static; }
+        .diagram-wrap { min-height: 460px; }
+      }
+
+      @media (max-width: 560px) {
+        .shell { width: min(100% - 28px, 1180px); }
+        nav { min-height: 60px; }
+        .nav-links a:not(:last-child) { display: none; }
+        .hero { padding-top: 64px; }
+        .hero-mark { inset: 22px 0 24px 17%; gap: 10px; opacity: 0.58; }
+        .hero-mark i { border-top-width: 8px; }
+        h1 { font-size: clamp(3.5rem, 18vw, 5.3rem); }
+        .benefits { margin-bottom: 68px; }
+        .benefit { grid-template-columns: 1fr; gap: 9px; padding: 20px 4px; }
+        .diagram-wrap { place-items: center start; }
+        .diagram-wrap svg { width: 700px !important; min-width: 700px; max-width: none !important; }
+        .map-mode { display: none; }
+        .map-scroll-hint { display: inline; }
+        section { padding: 68px 0; }
+        .gate-list li { grid-template-columns: 1fr; gap: 5px; }
+        footer .shell { flex-direction: column; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="shell" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Track home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          Track
+        </a>
+        <div class="nav-links">
+          <a href="#method">Method</a>
+          <a href="#example">Example</a>
+          <a href="README.md">Readme</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <div class="shell hero">
+        <div class="hero-mark" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="hero-copy">
+          <p class="eyebrow">$track / complex work, less waiting</p>
+          <h1>Track the work.<span>Finish what you started.</span></h1>
+          <p class="lead">See what can happen together, what has to happen first, and what should wait—so complex projects keep moving without wasted time or repeated work.</p>
+          <div class="actions">
+            <a class="button" href="#example">See the work unlock</a>
+            <a class="button secondary" href="SKILL.md">Read the skill</a>
+          </div>
+        </div>
+        <aside class="dispatch" aria-label="Current work map">
+          <div class="dispatch-head"><span>Current work map</span><span>3 moving now</span></div>
+          <div class="lane">
+            <b>Now</b>
+            <div><strong>Product · Metrics · Support</strong><small>Independent work moves together</small></div>
+          </div>
+          <div class="lane">
+            <b>Next</b>
+            <div><strong>Integration check</strong><small>Unlocks when required work is ready</small></div>
+          </div>
+          <div class="lane">
+            <b>Held</b>
+            <div><strong>Analytics polish</strong><small>Useful, but not needed for this release</small></div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="shell benefits" aria-label="Track benefits">
+        <article class="benefit">
+          <b>Less waiting</b>
+          <p>Independent work moves now.</p>
+        </article>
+        <article class="benefit">
+          <b>Less rework</b>
+          <p>Today’s “done” doesn’t become tomorrow’s problem.</p>
+        </article>
+        <article class="benefit">
+          <b>Less babysitting</b>
+          <p>You always know what can move next.</p>
+        </article>
+      </div>
+
+      <section id="method">
+        <div class="shell">
+          <div class="section-head">
+            <p class="label">The method</p>
+            <h2>A plan that can survive its own execution.</h2>
+          </div>
+          <div class="principles">
+            <article class="principle">
+              <b>Stable / 01</b>
+              <h3>The goal stays above the plan.</h3>
+              <p>Track revises tasks and assignments without quietly replacing the outcome they serve.</p>
+            </article>
+            <article class="principle">
+              <b>Visible / 02</b>
+              <h3>Dependencies decide the route.</h3>
+              <p>Independent work runs in parallel. Shared gates stay locked until their evidence arrives.</p>
+            </article>
+            <article class="principle">
+              <b>Adaptable / 03</b>
+              <h3>Sessions are resources, not structure.</h3>
+              <p>Split, merge, pause, or replace a session while the workstream and its handoff remain legible.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="example">
+        <div class="shell">
+          <div class="section-head">
+            <p class="label">Track example</p>
+            <h2>Ship an onboarding beta without losing the thread.</h2>
+          </div>
+          <div class="example-grid">
+            <aside class="prompt">
+              <strong>Ask Codex</strong>
+              Use $track to coordinate the onboarding beta. Reuse the product work that already exists, split independent work, keep one development map, and stop at a verified beta release.
+            </aside>
+            <div class="map-panel">
+              <div class="map-toolbar"><span>Living development map</span><span class="map-mode">Mermaid / sequence</span><span class="map-scroll-hint">Sequence · scroll →</span></div>
+              <div class="diagram-wrap">
+                <pre class="mermaid">
+sequenceDiagram
+    participant G as Goal / scope
+    participant P as Product
+    participant M as Metrics
+    participant S as Support
+    participant I as Integration gate
+    G->>G: Accept minimal beta scope
+    par Product flow
+        G->>P: Start product work
+        P-->>I: Submit flow evidence
+    and Success metrics
+        G->>M: Reuse completed metrics
+        M-->>I: Submit metrics evidence
+    and Support readiness
+        G->>S: Start support preparation
+        S-->>I: Submit readiness evidence
+    end
+    Note over P,S: Independent tracks move together
+    I->>I: Inspect all required evidence
+    alt Evidence passes
+        I-->>G: Unlock beta release
+    else Issue found
+        I-->>P: Return affected work only
+        P-->>I: Resubmit verified evidence
+    end
+                </pre>
+              </div>
+              <p class="map-note">Each vertical lane keeps one workstream visible over time. The beta unlocks only after all three tracks reach the integration gate; a failed check returns only the affected work.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="shell gate-grid">
+          <div class="gate-copy">
+            <p class="label">The scope gate</p>
+            <h2>New work must earn its place.</h2>
+            <p>Every new task, session, or expansion is checked against the current goal and observed need. Track keeps ambition visible without turning every idea into a commitment.</p>
+          </div>
+          <ul class="gate-list">
+            <li><b>Pass</b><span>Proceed at the smallest useful scope.</span></li>
+            <li><b>Reduce</b><span>Shrink the work, then check it again.</span></li>
+            <li><b>Hold</b><span>Keep it visible, but do not execute it now.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="shell install">
+          <p class="eyebrow">Start with the map</p>
+          <h2>Give Track a real goal, not a perfect plan.</h2>
+          <pre><code>Use $track to turn this project into a living development map and coordinate it to completion.</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell"><span>Track / v0.1.1</span><span>Map the work. Track it to done.</span></div>
+    </footer>
+
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+      mermaid.initialize({
+        startOnLoad: true,
+        securityLevel: "strict",
+        theme: "base",
+        themeVariables: {
+          background: "#f7faf9",
+          primaryColor: "#e8edff",
+          primaryTextColor: "#14292f",
+          primaryBorderColor: "#2949ba",
+          lineColor: "#5c7479",
+          secondaryColor: "#fff0c9",
+          tertiaryColor: "#e5f0ed",
+          fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          fontSize: "15px"
+        },
+        sequence: {
+          useMaxWidth: true,
+          actorMargin: 36,
+          messageMargin: 28,
+          mirrorActors: false
+        }
+      });
+    </script>
+  </body>
+</html>
