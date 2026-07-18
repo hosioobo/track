@@ -4,7 +4,7 @@ Track turns a complex development or research goal into one living work map.
 It keeps the goal stable while tasks, dependencies, tracks, and working
 sessions change around it.
 
-**Version:** 0.1.2
+**Version:** 0.1.3
 **Codex skill:** `$track`
 
 [Open the landing page](index.html) · [Read the skill instructions](SKILL.md)

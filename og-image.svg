@@ -1,14 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
   <title id="title">Track — Track the work. Finish what you started.</title>
-  <desc id="description">Track Open Graph card with three parallel work bars, a current work map, and benefits for complex projects.</desc>
+  <desc id="description">Track Open Graph card with the Track statement over three parallel work bars.</desc>
   <defs>
     <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
       <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#14292f" stroke-opacity="0.07" stroke-width="1"/>
     </pattern>
     <style>
-      .display { font-family: "Arial Narrow", "Avenir Next Condensed", "Roboto Condensed", sans-serif; font-weight: 900; letter-spacing: -4px; }
-      .body { font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; }
-      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .display { font-family: "Arial Narrow", "Avenir Next Condensed", "Roboto Condensed", sans-serif; font-weight: 900; letter-spacing: -5px; }
     </style>
   </defs>
 
@@ -16,57 +14,18 @@
   <rect width="1200" height="630" fill="url(#grid)"/>
 
   <g aria-hidden="true">
-    <rect x="654" y="304" width="142" height="232" fill="#14292f" fill-opacity="0.07"/>
-    <rect x="654" y="304" width="142" height="11" fill="#14292f"/>
-    <rect x="820" y="78" width="142" height="458" fill="#d94b2b" fill-opacity="0.11"/>
-    <rect x="820" y="78" width="142" height="11" fill="#d94b2b"/>
-    <rect x="986" y="186" width="142" height="350" fill="#2949ba" fill-opacity="0.09"/>
-    <rect x="986" y="186" width="142" height="11" fill="#2949ba"/>
-  </g>
-
-  <g aria-label="Track brand">
-    <rect x="68" y="48" width="12" height="20" fill="#14292f"/>
-    <rect x="85" y="40" width="12" height="28" fill="#d94b2b"/>
-    <rect x="102" y="52" width="12" height="16" fill="#14292f"/>
-    <text x="128" y="64" fill="#14292f" class="mono" font-size="17" font-weight="800" letter-spacing="1.5">TRACK</text>
-    <text x="1132" y="62" text-anchor="end" fill="#2949ba" class="mono" font-size="13" font-weight="800" letter-spacing="1.2">$TRACK / v0.1.2</text>
+    <rect x="604" y="304" width="154" height="256" fill="#14292f" fill-opacity="0.07"/>
+    <rect x="604" y="304" width="154" height="13" fill="#14292f"/>
+    <rect x="790" y="56" width="154" height="504" fill="#d94b2b" fill-opacity="0.11"/>
+    <rect x="790" y="56" width="154" height="13" fill="#d94b2b"/>
+    <rect x="976" y="174" width="154" height="386" fill="#2949ba" fill-opacity="0.09"/>
+    <rect x="976" y="174" width="154" height="13" fill="#2949ba"/>
   </g>
 
   <g aria-label="Track the work. Finish what you started.">
-    <text x="68" y="164" fill="#14292f" class="display" font-size="88">TRACK THE</text>
-    <text x="68" y="239" fill="#14292f" class="display" font-size="88">WORK.</text>
-    <text x="68" y="322" fill="#d94b2b" class="display" font-size="88">FINISH WHAT</text>
-    <text x="68" y="397" fill="#d94b2b" class="display" font-size="88">YOU STARTED.</text>
-  </g>
-
-  <g class="body" fill="#14292f" font-size="20" font-weight="600">
-    <text x="70" y="445">Move independent work now. Unlock the next step at the right time.</text>
-    <text x="70" y="474">Finish complex projects with less waiting, rework, and babysitting.</text>
-  </g>
-
-  <g aria-label="Current work map">
-    <rect x="706" y="338" width="424" height="166" fill="#f7faf9" stroke="#14292f" stroke-width="2"/>
-    <rect x="714" y="346" width="424" height="166" fill="#2949ba" fill-opacity="0.16"/>
-    <rect x="706" y="338" width="424" height="166" fill="#f7faf9" stroke="#14292f" stroke-width="2"/>
-    <path d="M706 376H1130 M706 419H1130 M706 462H1130" stroke="#8fa7a5"/>
-    <text x="722" y="363" fill="#14292f" class="mono" font-size="12" font-weight="800" letter-spacing="0.8">CURRENT WORK MAP</text>
-    <text x="1114" y="363" text-anchor="end" fill="#d94b2b" class="mono" font-size="12" font-weight="800">3 MOVING NOW</text>
-
-    <text x="722" y="402" fill="#2949ba" class="mono" font-size="11" font-weight="800">NOW</text>
-    <text x="790" y="402" fill="#14292f" class="body" font-size="17" font-weight="800">Product · Metrics · Support</text>
-    <text x="722" y="445" fill="#2949ba" class="mono" font-size="11" font-weight="800">NEXT</text>
-    <text x="790" y="445" fill="#14292f" class="body" font-size="17" font-weight="800">Integration check</text>
-    <text x="722" y="488" fill="#526a70" class="mono" font-size="11" font-weight="800">HELD</text>
-    <text x="790" y="488" fill="#14292f" class="body" font-size="17" font-weight="800">Analytics polish</text>
-  </g>
-
-  <g aria-label="Track benefits">
-    <path d="M68 538H1132 M68 610H1132 M422 538V610 M777 538V610" stroke="#14292f" stroke-width="1"/>
-    <text x="68" y="564" fill="#2949ba" class="mono" font-size="12" font-weight="800" letter-spacing="0.8">LESS WAITING</text>
-    <text x="68" y="592" fill="#14292f" class="body" font-size="16" font-weight="800">MOVE INDEPENDENT WORK NOW.</text>
-    <text x="445" y="564" fill="#2949ba" class="mono" font-size="12" font-weight="800" letter-spacing="0.8">LESS REWORK</text>
-    <text x="445" y="592" fill="#14292f" class="body" font-size="16" font-weight="800">KEEP FINISHED WORK FINISHED.</text>
-    <text x="800" y="564" fill="#2949ba" class="mono" font-size="12" font-weight="800" letter-spacing="0.8">LESS BABYSITTING</text>
-    <text x="800" y="592" fill="#14292f" class="body" font-size="16" font-weight="800">KNOW WHAT MOVES NEXT.</text>
+    <text x="68" y="166" fill="#14292f" class="display" font-size="112">TRACK THE</text>
+    <text x="68" y="262" fill="#14292f" class="display" font-size="112">WORK.</text>
+    <text x="68" y="386" fill="#d94b2b" class="display" font-size="112">FINISH WHAT</text>
+    <text x="68" y="482" fill="#d94b2b" class="display" font-size="112">YOU STARTED.</text>
   </g>
 </svg>
