@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="See what can move together, what must happen first, and what should wait—so complex work reaches a verified finish with less waiting and rework.">
+    <meta name="description" content="Put the critical path first. Run independent work in parallel. Park what can wait. Track keeps the goal fixed and the work moving until the result checks out.">
     <meta name="theme-color" content="#dce7e5">
-    <title>Track — Track the work. Finish what you started.</title>
+    <title>Track — Complex work. Stop waiting. Finish it.</title>
     <link rel="alternate" hreflang="en" href="index.html">
     <link rel="alternate" hreflang="ko" href="index.ko.html">
     <link rel="alternate" hreflang="x-default" href="index.html">
@@ -13,16 +13,16 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ko_KR">
-    <meta property="og:title" content="Track — Track the work. Finish what you started.">
-    <meta property="og:description" content="See what can move together, what must happen first, and what should wait—so complex work reaches a verified finish with less waiting and rework.">
+    <meta property="og:title" content="Track — Complex work. Stop waiting. Finish it.">
+    <meta property="og:description" content="Put the critical path first, run independent work in parallel, and park what can wait. Keep complex work moving until the result checks out.">
     <meta property="og:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Track — Track the work. Finish what you started.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Track — Track the work. Finish what you started.">
-    <meta name="twitter:description" content="See what can move together, what must happen first, and what should wait—so complex work reaches a verified finish with less waiting and rework.">
+    <meta name="twitter:title" content="Track — Complex work. Stop waiting. Finish it.">
+    <meta name="twitter:description" content="Put the critical path first, run independent work in parallel, and park what can wait. Keep complex work moving until the result checks out.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png">
     <meta name="twitter:image:alt" content="Track — Track the work. Finish what you started.">
     <style>
@@ -105,7 +105,7 @@
 
       .hero-mark {
         position: absolute;
-        inset: 38px -5vw 46px 38%;
+        inset: 38px 0 46px 66%;
         z-index: -1;
         display: grid;
         grid-template-columns: repeat(3, minmax(70px, 1fr));
@@ -117,8 +117,8 @@
       .hero-mark i {
         display: block;
         height: 47%;
-        border-top: 12px solid var(--ink);
-        background: rgba(20, 41, 47, 0.07);
+        border-top: 12px solid var(--blue);
+        background: rgba(41, 73, 186, 0.08);
       }
 
       .hero-mark i:nth-child(2) {
@@ -129,8 +129,8 @@
 
       .hero-mark i:nth-child(3) {
         height: 66%;
-        border-color: var(--blue);
-        background: rgba(41, 73, 186, 0.08);
+        border-color: var(--ink);
+        background: rgba(20, 41, 47, 0.07);
       }
 
       .hero-copy, .dispatch { position: relative; z-index: 1; }
@@ -265,8 +265,8 @@
 
       @media (max-width: 820px) {
         .hero, .example-grid, .gate-grid { grid-template-columns: 1fr; }
-        .hero { min-height: auto; }
-        .hero-mark { inset: 30px 0 28px 26%; opacity: 0.72; }
+        .hero { min-height: auto; padding-top: 150px; }
+        .hero-mark { inset: 26px 0 auto 46%; height: 96px; opacity: 0.62; }
         .dispatch { max-width: 520px; }
         .benefits { grid-template-columns: 1fr; }
         .benefit { min-height: 0; display: grid; grid-template-columns: 130px 1fr; gap: 18px; align-items: baseline; }
@@ -284,10 +284,10 @@
         .shell { width: min(100% - 28px, 1180px); }
         nav { min-height: 60px; }
         .nav-links a:not(:last-child) { display: none; }
-        .hero { padding-top: 64px; }
-        .hero-mark { inset: 22px 0 24px 17%; gap: 10px; opacity: 0.58; }
+        .hero { padding-top: 120px; }
+        .hero-mark { inset: 18px -4px auto 34%; height: 76px; gap: 10px; opacity: 0.58; }
         .hero-mark i { border-top-width: 8px; }
-        h1 { font-size: clamp(3.5rem, 18vw, 5.3rem); }
+        h1 { font-size: clamp(3.15rem, 14.5vw, 4.7rem); word-spacing: 0.05em; }
         .benefits { margin-bottom: 68px; }
         .benefit { grid-template-columns: 1fr; gap: 9px; padding: 20px 4px; }
         .diagram-wrap { place-items: center start; }
@@ -326,66 +326,66 @@
         <div class="hero-mark" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="hero-copy">
           <p class="eyebrow">Goal-first work orchestration</p>
-          <h1>Track the work.<span>Finish what you started.</span></h1>
-          <p class="lead">See what can move together, what must happen first, and what should wait—so complex work reaches a verified finish with less waiting and rework.</p>
+          <h1>Complex work.<span>Stop waiting.<br>Finish it.</span></h1>
+          <p class="lead">Put the critical path first. Run independent work in parallel. Park what can wait. When plans change, Track keeps the goal fixed and the work moving until the result checks out.</p>
           <div class="actions">
-            <a class="button" href="#example">See the work unlock</a>
-            <a class="button secondary" href="SKILL.md">Read the skill</a>
+            <a class="button" href="#example">See Track in action</a>
+            <a class="button secondary" href="SKILL.md">Explore the skill</a>
           </div>
         </div>
         <aside class="dispatch" aria-label="Current work map">
-          <div class="dispatch-head"><span>Current work map</span><span>3 moving now</span></div>
+          <div class="dispatch-head"><span>Work map</span><span>3 tracks active</span></div>
           <div class="lane">
             <b>Now</b>
-            <div><strong>Product · Metrics · Support</strong><small>Independent work moves together</small></div>
+            <div><strong>Product · Metrics · Support</strong><small>Unblocked work runs in parallel</small></div>
           </div>
           <div class="lane">
             <b>Next</b>
-            <div><strong>Integration check</strong><small>Unlocks when required work is ready</small></div>
+            <div><strong>Integration check</strong><small>Starts when required results are in</small></div>
           </div>
           <div class="lane">
-            <b>Held</b>
-            <div><strong>Analytics polish</strong><small>Useful, but not needed for this release</small></div>
+            <b>Hold</b>
+            <div><strong>Analytics polish</strong><small>Useful, not needed for this release</small></div>
           </div>
         </aside>
       </div>
 
       <div class="shell benefits" aria-label="Track benefits">
         <article class="benefit">
-          <b>Less waiting</b>
-          <p>Independent work moves now.</p>
+          <b>Stay clear</b>
+          <p>See the next move—and what’s in the way.</p>
         </article>
         <article class="benefit">
           <b>Less rework</b>
-          <p>Today’s “done” doesn’t become tomorrow’s problem.</p>
+          <p>Reuse work and decisions you’ve already verified.</p>
         </article>
         <article class="benefit">
-          <b>Less babysitting</b>
-          <p>You always know what can move next.</p>
+          <b>Wait less</b>
+          <p>Don’t queue work that can run in parallel.</p>
         </article>
       </div>
 
       <section id="method">
         <div class="shell">
           <div class="section-head">
-            <p class="label">The method</p>
-            <h2>A plan that can survive its own execution.</h2>
+            <p class="label">How Track works</p>
+            <h2>Plans change. The project keeps moving.</h2>
           </div>
           <div class="principles">
             <article class="principle">
-              <b>Stable / 01</b>
-              <h3>The goal stays above the plan.</h3>
-              <p>Track revises tasks and assignments without quietly replacing the outcome they serve.</p>
+              <b>Goal / 01</b>
+              <h3>Change the plan. Keep the goal.</h3>
+              <p>Reorder tasks and working sessions as needed without losing sight of the outcome.</p>
             </article>
             <article class="principle">
-              <b>Visible / 02</b>
-              <h3>Dependencies decide the route.</h3>
-              <p>Independent work runs in parallel. Shared gates stay locked until their evidence arrives.</p>
+              <b>Dependency / 02</b>
+              <h3>Run unblocked work in parallel.</h3>
+              <p>Independent tasks move together. Shared checkpoints wait until every required result is in.</p>
             </article>
             <article class="principle">
-              <b>Adaptable / 03</b>
-              <h3>Sessions are resources, not structure.</h3>
-              <p>Split, merge, pause, or replace a session while the workstream and its handoff remain legible.</p>
+              <b>Gate / 03</b>
+              <h3>Every task earns its place.</h3>
+              <p>Before new work starts, check that it serves the goal. Trim or park anything that grows past what the outcome needs.</p>
             </article>
           </div>
         </div>
@@ -394,16 +394,16 @@
       <section id="example">
         <div class="shell">
           <div class="section-head">
-            <p class="label">Track example</p>
-            <h2>Ship an onboarding beta without losing the thread.</h2>
+            <p class="label">Work map example</p>
+            <h2>Make complex work visible—to humans and agents alike.</h2>
           </div>
           <div class="example-grid">
             <aside class="prompt">
               <strong>Ask Codex</strong>
-              Use $track to coordinate the onboarding beta. Reuse the product work that already exists, split independent work, keep one development map, and stop at a verified beta release.
+              Use $track to run this onboarding beta. Reuse work that’s already done, split anything that can move independently, keep one shared work map current, and continue until every release condition is verified.
             </aside>
             <div class="map-panel">
-              <div class="map-toolbar"><span>Living development map</span><span class="map-mode">Mermaid / sequence</span><span class="map-scroll-hint">Sequence · scroll →</span></div>
+              <div class="map-toolbar"><span>Shared work map</span><span class="map-mode">Mermaid / sequence</span><span class="map-scroll-hint">Sequence · scroll →</span></div>
               <div class="diagram-wrap">
                 <pre class="mermaid">
 sequenceDiagram
@@ -411,29 +411,29 @@ sequenceDiagram
     participant P as Product
     participant M as Metrics
     participant S as Support
-    participant I as Integration gate
-    G->>G: Accept minimal beta scope
+    participant I as Release check
+    G->>G: Confirm minimum beta scope
     par Product flow
         G->>P: Start product work
-        P-->>I: Submit flow evidence
+        P-->>I: Send verified flow result
     and Success metrics
-        G->>M: Reuse completed metrics
-        M-->>I: Submit metrics evidence
+        G->>M: Reuse completed metrics work
+        M-->>I: Send verified metrics result
     and Support readiness
         G->>S: Start support preparation
-        S-->>I: Submit readiness evidence
+        S-->>I: Send readiness status
     end
-    Note over P,S: Independent tracks move together
-    I->>I: Inspect all required evidence
-    alt Evidence passes
-        I-->>G: Unlock beta release
+    Note over P,S: Unblocked tracks run in parallel
+    I->>I: Check every release condition
+    alt Checks pass
+        I-->>G: Approve beta release
     else Issue found
-        I-->>P: Return affected work only
-        P-->>I: Resubmit verified evidence
+        I-->>P: Retry affected work only
+        P-->>I: Send verified result again
     end
                 </pre>
               </div>
-              <p class="map-note">Each vertical lane keeps one workstream visible over time. The beta unlocks only after all three tracks reach the integration gate; a failed check returns only the affected work.</p>
+              <p class="map-note">Each lane represents a role in the work. Product, metrics, and support all report into one release check. If something fails, only the affected track loops back.</p>
             </div>
           </div>
         </div>
@@ -442,29 +442,29 @@ sequenceDiagram
       <section>
         <div class="shell gate-grid">
           <div class="gate-copy">
-            <p class="label">The scope gate</p>
-            <h2>New work must earn its place.</h2>
-            <p>Every new task, session, or expansion is checked against the current goal and observed need. Track keeps ambition visible without turning every idea into a commitment.</p>
+            <p class="label">Scope control</p>
+            <h2>Do only what’s necessary.</h2>
+            <p>Every new task or scope change has to serve the current goal. Good ideas can stay visible without becoming commitments. Track protects the smallest scope you can actually finish.</p>
           </div>
           <ul class="gate-list">
-            <li><b>Pass</b><span>Proceed at the smallest useful scope.</span></li>
-            <li><b>Reduce</b><span>Shrink the work, then check it again.</span></li>
-            <li><b>Hold</b><span>Keep it visible, but do not execute it now.</span></li>
+            <li><b>Start</b><span>Begin with the smallest scope that delivers the outcome.</span></li>
+            <li><b>Trim</b><span>Make it smaller, then check again.</span></li>
+            <li><b>Hold</b><span>Keep it visible. Don’t start it yet.</span></li>
           </ul>
         </div>
       </section>
 
       <section>
         <div class="shell install">
-          <p class="eyebrow">Start with the map</p>
-          <h2>Give Track a real goal, not a perfect plan.</h2>
-          <pre><code>Use $track to turn this project into a living development map and coordinate it to completion.</code></pre>
+          <p class="eyebrow">Start with a real goal</p>
+          <h2>Set the goal. Let Track handle the plan.</h2>
+          <pre><code>Use $track to map this project and carry it to completion. Run unblocked work in parallel, and keep dependencies, release checks, and held work current.</code></pre>
         </div>
       </section>
     </main>
 
     <footer>
-      <div class="shell"><span>Track / v0.1.7</span><span>Map the work. Track it to done.</span></div>
+      <div class="shell"><span>Track / v0.1.8</span><span>Move complex work all the way to done.</span></div>
     </footer>
 
     <script type="module">
