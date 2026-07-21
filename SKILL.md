@@ -17,6 +17,7 @@ Map the work. Track it to done.
 5. Treat tracks as relatively stable workstreams and sessions as replaceable execution resources.
 6. Inspect results and resolve routine coordination issues before asking the user. Escalate only decisions that materially affect goal, scope, cost, risk, or product direction.
 7. Apply the over-engineering gate before adding a task, creating a session, or expanding scope.
+8. Keep orchestration lightweight and judgment-led. Use the existing map, available sessions, and current tools; add project-management infrastructure or automated scheduling or rebalancing only after repeated observed work reveals a stable need.
 
 ## Workflow
 
@@ -192,15 +193,6 @@ ASCII fallback for the same map:
 - Tell the user what is happening now, what was verified, what comes next, and what decision—if any—is needed from them.
 - Do not require the user to read internal logs, identifiers, or session mechanics to understand progress.
 - Prefer one necessary question over a list of speculative choices.
-
-## Version 1 boundaries
-
-- Do not build a project-management backend, automatic scheduler, dashboard, scoring system, or performance metric system.
-- Do not automate session rebalancing; apply the rules with judgment.
-- Do not multiply tracks or sessions for a small one-step task.
-- Do not redo completed work merely to fit this workflow.
-- Do not pre-solve hypothetical scale, security, or operational problems without observed need.
-- Add automation only after repeated real projects reveal a stable, reusable operation.
 
 ## Final self-check
 
