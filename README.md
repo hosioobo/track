@@ -1,10 +1,10 @@
 # Track
 
-Track turns a complex development or research goal into one living work map.
-It keeps the goal stable while tasks, dependencies, tracks, and working
-sessions change around it.
+Track is a lightweight, human-guided orchestration skill for complex work. It
+keeps the goal stable while tasks, dependencies, tracks, and working sessions
+change around it.
 
-**Version:** 0.1.4
+**Version:** 0.1.5
 **Codex skill:** `$track`
 
 [Open the landing page](index.html) · [Read the skill instructions](SKILL.md)
