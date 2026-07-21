@@ -1,30 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="See what can move together, what must happen first, and what should wait—so complex work reaches a verified finish with less waiting and rework.">
+    <meta name="description" content="병렬로 진행할 일, 먼저 끝낼 일, 이번에는 미룰 일을 한눈에 정리하세요. Track은 목표를 놓치지 않고 결과를 확인할 때까지 프로젝트를 움직입니다.">
     <meta name="theme-color" content="#dce7e5">
-    <title>Track — Track the work. Finish what you started.</title>
+    <title>Track — 복잡한 작업도, 멈추지 않고 끝내세요.</title>
     <link rel="alternate" hreflang="en" href="index.html">
     <link rel="alternate" hreflang="ko" href="index.ko.html">
     <link rel="alternate" hreflang="x-default" href="index.html">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23dce7e5'/%3E%3Cpath d='M9 35h12V21H9zm17 0h12V10H26zm17 0h12V25H43z' fill='%2314292f'/%3E%3Cpath d='M26 35h12V10H26z' fill='%23d94b2b'/%3E%3C/svg%3E">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="ko_KR">
-    <meta property="og:title" content="Track — Track the work. Finish what you started.">
-    <meta property="og:description" content="See what can move together, what must happen first, and what should wait—so complex work reaches a verified finish with less waiting and rework.">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:title" content="Track — 복잡한 작업도, 멈추지 않고 끝내세요.">
+    <meta property="og:description" content="병렬로 진행할 일과 기다려야 할 일을 나누고, 이번에 하지 않을 일은 미룹니다. 덜 기다리고 덜 되돌리며 끝내세요.">
     <meta property="og:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Track — Track the work. Finish what you started.">
+    <meta property="og:image:alt" content="Track — 복잡한 작업도, 멈추지 않고 끝내세요.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Track — Track the work. Finish what you started.">
-    <meta name="twitter:description" content="See what can move together, what must happen first, and what should wait—so complex work reaches a verified finish with less waiting and rework.">
+    <meta name="twitter:title" content="Track — 복잡한 작업도, 멈추지 않고 끝내세요.">
+    <meta name="twitter:description" content="병렬로 진행할 일과 기다려야 할 일을 나누고, 이번에 하지 않을 일은 미룹니다. 덜 기다리고 덜 되돌리며 끝내세요.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png">
-    <meta name="twitter:image:alt" content="Track — Track the work. Finish what you started.">
+    <meta name="twitter:image:alt" content="Track — 복잡한 작업도, 멈추지 않고 끝내세요.">
     <style>
       :root {
         --ink: #14292f;
@@ -37,7 +37,8 @@
         --line: #8fa7a5;
         --dark-line: #5c7479;
         --display: "Arial Narrow", "Avenir Next Condensed", "Roboto Condensed", sans-serif;
-        --body: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        --ko-display: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+        --body: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Avenir Next", Avenir, "Segoe UI", sans-serif;
         --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       }
 
@@ -53,7 +54,8 @@
           var(--field);
         background-size: 28px 28px;
         font-family: var(--body);
-        line-height: 1.55;
+        line-height: 1.65;
+        word-break: keep-all;
       }
 
       a { color: inherit; }
@@ -105,7 +107,7 @@
 
       .hero-mark {
         position: absolute;
-        inset: 38px -5vw 46px 38%;
+        inset: 38px 0 46px 66%;
         z-index: -1;
         display: grid;
         grid-template-columns: repeat(3, minmax(70px, 1fr));
@@ -117,8 +119,8 @@
       .hero-mark i {
         display: block;
         height: 47%;
-        border-top: 12px solid var(--ink);
-        background: rgba(20, 41, 47, 0.07);
+        border-top: 12px solid var(--blue);
+        background: rgba(41, 73, 186, 0.08);
       }
 
       .hero-mark i:nth-child(2) {
@@ -129,8 +131,8 @@
 
       .hero-mark i:nth-child(3) {
         height: 66%;
-        border-color: var(--blue);
-        background: rgba(41, 73, 186, 0.08);
+        border-color: var(--ink);
+        background: rgba(20, 41, 47, 0.07);
       }
 
       .hero-copy, .dispatch { position: relative; z-index: 1; }
@@ -148,13 +150,13 @@
       h1 {
         max-width: 830px;
         margin-bottom: 28px;
-        font: 900 clamp(4rem, 8.2vw, 7.7rem)/0.8 var(--display);
-        letter-spacing: -0.06em;
+        font: 900 clamp(3.8rem, 7.2vw, 6.8rem)/0.92 var(--ko-display);
+        letter-spacing: -0.075em;
         text-transform: uppercase;
       }
 
       h1 span { display: block; color: var(--orange); }
-      .lead { max-width: 690px; margin-bottom: 30px; font-size: clamp(1.12rem, 2vw, 1.45rem); line-height: 1.42; }
+      .lead { max-width: 690px; margin-bottom: 30px; font-size: clamp(1.12rem, 2vw, 1.4rem); line-height: 1.55; }
 
       .actions { display: flex; flex-wrap: wrap; gap: 12px; }
       .button {
@@ -203,7 +205,7 @@
       .lane > b { color: var(--blue); font: 800 0.68rem/1.5 var(--mono); text-transform: uppercase; }
       .lane:nth-child(4) > b { color: var(--muted); }
       .lane strong { display: block; margin-bottom: 3px; font-size: 0.95rem; line-height: 1.3; }
-      .lane small { display: block; color: var(--muted); font: 0.72rem/1.45 var(--mono); }
+      .lane small { display: block; color: var(--muted); font-size: 0.74rem; line-height: 1.5; }
 
       .benefits {
         display: grid;
@@ -212,19 +214,19 @@
         border-block: 1px solid var(--ink);
       }
 
-      .benefit { min-height: 136px; padding: 24px 26px; }
+      .benefit { min-height: 150px; padding: 24px 26px; }
       .benefit + .benefit { border-left: 1px solid var(--ink); }
       .benefit b { display: block; margin-bottom: 28px; color: var(--blue); font: 800 0.7rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
-      .benefit p { max-width: 260px; margin-bottom: 0; font: 800 clamp(1.18rem, 2vw, 1.55rem)/1.12 var(--display); text-transform: uppercase; }
+      .benefit p { max-width: 290px; margin-bottom: 0; font: 800 clamp(1.15rem, 1.8vw, 1.48rem)/1.25 var(--ko-display); letter-spacing: -0.045em; }
 
       section { padding: 88px 0; border-top: 1px solid var(--dark-line); }
       .section-head { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 36px; margin-bottom: 44px; }
-      .section-head h2 { max-width: 780px; margin: 0; font: 850 clamp(2.6rem, 6vw, 5.3rem)/0.9 var(--display); letter-spacing: -0.04em; text-transform: uppercase; }
+      .section-head h2 { max-width: 780px; margin: 0; font: 850 clamp(2.5rem, 5.5vw, 4.9rem)/1.02 var(--ko-display); letter-spacing: -0.065em; }
 
       .principles { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--dark-line); background: var(--dark-line); gap: 1px; }
-      .principle { min-height: 250px; padding: 27px; background: var(--paper); }
+      .principle { min-height: 270px; padding: 27px; background: var(--paper); }
       .principle b { display: block; margin-bottom: 48px; color: var(--orange); font: 800 0.75rem var(--mono); }
-      .principle h3 { max-width: 230px; margin-bottom: 14px; font: 800 1.65rem/1.05 var(--display); text-transform: uppercase; }
+      .principle h3 { max-width: 250px; margin-bottom: 14px; font: 800 1.6rem/1.2 var(--ko-display); letter-spacing: -0.055em; }
       .principle p { margin-bottom: 0; color: var(--muted); }
 
       .example-grid { display: grid; grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr); gap: 28px; align-items: start; }
@@ -235,9 +237,10 @@
         border-left: 5px solid var(--orange);
         background: var(--ink);
         color: var(--paper);
-        font: 0.86rem/1.75 var(--mono);
+        font-size: 0.87rem;
+        line-height: 1.8;
       }
-      .prompt strong { display: block; margin-bottom: 13px; color: var(--yellow); text-transform: uppercase; }
+      .prompt strong { display: block; margin-bottom: 13px; color: var(--yellow); font-family: var(--mono); text-transform: uppercase; }
 
       .map-panel { min-width: 0; border: 1px solid var(--ink); background: var(--paper); }
       .map-toolbar { display: flex; justify-content: space-between; gap: 16px; padding: 13px 16px; border-bottom: 1px solid var(--line); font: 700 0.68rem var(--mono); text-transform: uppercase; }
@@ -250,6 +253,7 @@
 
       .gate-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; }
       .gate-copy { padding-right: 5vw; }
+      .gate-copy h2 { font: 850 clamp(2.4rem, 5vw, 4.6rem)/1.04 var(--ko-display); letter-spacing: -0.06em; }
       .gate-copy p { max-width: 650px; font-size: 1.15rem; }
       .gate-list { margin: 0; padding: 0; border-top: 1px solid var(--ink); list-style: none; }
       .gate-list li { display: grid; grid-template-columns: 88px 1fr; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--ink); }
@@ -257,16 +261,16 @@
 
       .install { padding: clamp(26px, 5vw, 52px); border: 1px solid var(--ink); background: var(--blue); color: white; }
       .install .eyebrow { color: var(--yellow); }
-      .install h2 { max-width: 770px; margin-bottom: 26px; font: 850 clamp(2.8rem, 7vw, 6.2rem)/0.86 var(--display); letter-spacing: -0.04em; text-transform: uppercase; }
-      .install pre { margin: 0; padding: 18px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.42); background: rgba(7, 18, 48, 0.35); color: white; font: 0.83rem/1.65 var(--mono); }
+      .install h2 { max-width: 850px; margin-bottom: 26px; font: 850 clamp(2.6rem, 6vw, 5.4rem)/1.02 var(--ko-display); letter-spacing: -0.065em; }
+      .install pre { margin: 0; padding: 18px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.42); background: rgba(7, 18, 48, 0.35); color: white; font-size: 0.83rem; line-height: 1.65; white-space: pre-wrap; word-break: break-word; }
 
       footer { padding: 24px 0; border-top: 1px solid var(--dark-line); font: 0.72rem var(--mono); }
       footer .shell { display: flex; justify-content: space-between; gap: 20px; }
 
       @media (max-width: 820px) {
         .hero, .example-grid, .gate-grid { grid-template-columns: 1fr; }
-        .hero { min-height: auto; }
-        .hero-mark { inset: 30px 0 28px 26%; opacity: 0.72; }
+        .hero { min-height: auto; padding-top: 150px; }
+        .hero-mark { inset: 26px 0 auto 46%; height: 96px; opacity: 0.62; }
         .dispatch { max-width: 520px; }
         .benefits { grid-template-columns: 1fr; }
         .benefit { min-height: 0; display: grid; grid-template-columns: 130px 1fr; gap: 18px; align-items: baseline; }
@@ -284,10 +288,10 @@
         .shell { width: min(100% - 28px, 1180px); }
         nav { min-height: 60px; }
         .nav-links a:not(:last-child) { display: none; }
-        .hero { padding-top: 64px; }
-        .hero-mark { inset: 22px 0 24px 17%; gap: 10px; opacity: 0.58; }
+        .hero { padding-top: 120px; }
+        .hero-mark { inset: 18px -4px auto 34%; height: 76px; gap: 10px; opacity: 0.58; }
         .hero-mark i { border-top-width: 8px; }
-        h1 { font-size: clamp(3.5rem, 18vw, 5.3rem); }
+        h1 { font-size: clamp(3.15rem, 14.5vw, 4.7rem); }
         .benefits { margin-bottom: 68px; }
         .benefit { grid-template-columns: 1fr; gap: 9px; padding: 20px 4px; }
         .diagram-wrap { place-items: center start; }
@@ -307,16 +311,16 @@
   </head>
   <body>
     <header>
-      <nav class="shell" aria-label="Main navigation">
-        <a class="brand" href="#top" aria-label="Track home">
+      <nav class="shell" aria-label="주요 메뉴">
+        <a class="brand" href="#top" aria-label="Track 홈">
           <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
           Track
         </a>
         <div class="nav-links">
-          <a href="#method">Method</a>
-          <a href="#example">Example</a>
-          <a href="README.md">Readme</a>
-          <a href="index.ko.html" hreflang="ko" lang="ko">한국어</a>
+          <a href="#method">방식</a>
+          <a href="#example">예시</a>
+          <a href="README.md">README</a>
+          <a href="index.html" hreflang="en" lang="en">English</a>
         </div>
       </nav>
     </header>
@@ -326,66 +330,66 @@
         <div class="hero-mark" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="hero-copy">
           <p class="eyebrow">Goal-first work orchestration</p>
-          <h1>Track the work.<span>Finish what you started.</span></h1>
-          <p class="lead">See what can move together, what must happen first, and what should wait—so complex work reaches a verified finish with less waiting and rework.</p>
+          <h1>복잡한 작업도,<span>멈추지 않고 끝내세요.</span></h1>
+          <p class="lead">지금 병렬로 진행할 일, 먼저 끝내야 할 일, 이번에는 미뤄둘 일을 한눈에 정리하세요. Track은 계획이 바뀌어도 목표를 놓치지 않고, 결과를 확인할 때까지 프로젝트를 움직입니다.</p>
           <div class="actions">
-            <a class="button" href="#example">See the work unlock</a>
-            <a class="button secondary" href="SKILL.md">Read the skill</a>
+            <a class="button" href="#example">작업 맵 예시 보기</a>
+            <a class="button secondary" href="SKILL.md">스킬 살펴보기</a>
           </div>
         </div>
-        <aside class="dispatch" aria-label="Current work map">
-          <div class="dispatch-head"><span>Current work map</span><span>3 moving now</span></div>
+        <aside class="dispatch" aria-label="현재 작업 지도">
+          <div class="dispatch-head"><span>Work map</span><span>3 tracks active</span></div>
           <div class="lane">
             <b>Now</b>
-            <div><strong>Product · Metrics · Support</strong><small>Independent work moves together</small></div>
+            <div><strong>제품 · 지표 · 지원</strong><small>막히지 않는 일은 동시에 진행</small></div>
           </div>
           <div class="lane">
             <b>Next</b>
-            <div><strong>Integration check</strong><small>Unlocks when required work is ready</small></div>
+            <div><strong>통합 점검</strong><small>필수 결과가 모이면 바로 시작</small></div>
           </div>
           <div class="lane">
-            <b>Held</b>
-            <div><strong>Analytics polish</strong><small>Useful, but not needed for this release</small></div>
+            <b>Hold</b>
+            <div><strong>분석 화면 개선</strong><small>유용하지만 이번 릴리스에는 불필요</small></div>
           </div>
         </aside>
       </div>
 
-      <div class="shell benefits" aria-label="Track benefits">
+      <div class="shell benefits" aria-label="Track의 이점">
         <article class="benefit">
-          <b>Less waiting</b>
-          <p>Independent work moves now.</p>
+          <b>Wait less</b>
+          <p>막히지 않는 일은 바로 병렬로 돌립니다.</p>
         </article>
         <article class="benefit">
-          <b>Less rework</b>
-          <p>Today’s “done” doesn’t become tomorrow’s problem.</p>
+          <b>Rework less</b>
+          <p>완료한 결정과 결과를 다시 활용합니다.</p>
         </article>
         <article class="benefit">
-          <b>Less babysitting</b>
-          <p>You always know what can move next.</p>
+          <b>Stay clear</b>
+          <p>다음 할 일과 막힌 일을 한눈에 봅니다.</p>
         </article>
       </div>
 
       <section id="method">
         <div class="shell">
           <div class="section-head">
-            <p class="label">The method</p>
-            <h2>A plan that can survive its own execution.</h2>
+            <p class="label">How Track works</p>
+            <h2>계획이 바뀌어도, 프로젝트는 앞으로 갑니다.</h2>
           </div>
           <div class="principles">
             <article class="principle">
-              <b>Stable / 01</b>
-              <h3>The goal stays above the plan.</h3>
-              <p>Track revises tasks and assignments without quietly replacing the outcome they serve.</p>
+              <b>Goal / 01</b>
+              <h3>계획은 바꿔도, 목표는 바꾸지 않습니다.</h3>
+              <p>작업 순서와 실행 단위는 상황에 맞게 조정하되, 처음 정한 결과는 놓치지 않습니다.</p>
             </article>
             <article class="principle">
-              <b>Visible / 02</b>
-              <h3>Dependencies decide the route.</h3>
-              <p>Independent work runs in parallel. Shared gates stay locked until their evidence arrives.</p>
+              <b>Dependency / 02</b>
+              <h3>막히지 않는 일부터 병렬로 돌립니다.</h3>
+              <p>독립적인 작업은 동시에 진행하고, 함께 확인해야 할 일은 검증 결과가 모일 때까지 기다립니다.</p>
             </article>
             <article class="principle">
-              <b>Adaptable / 03</b>
-              <h3>Sessions are resources, not structure.</h3>
-              <p>Split, merge, pause, or replace a session while the workstream and its handoff remain legible.</p>
+              <b>Adapt / 03</b>
+              <h3>필요한 만큼 나누고, 필요할 때 합칩니다.</h3>
+              <p>Codex session은 작업 흐름에 맞춰 나누고 합치며, 필요하면 멈추거나 교체합니다.</p>
             </article>
           </div>
         </div>
@@ -394,46 +398,46 @@
       <section id="example">
         <div class="shell">
           <div class="section-head">
-            <p class="label">Track example</p>
-            <h2>Ship an onboarding beta without losing the thread.</h2>
+            <p class="label">Track in action</p>
+            <h2>온보딩 베타를 흐름 끊김 없이 출시하세요.</h2>
           </div>
           <div class="example-grid">
             <aside class="prompt">
               <strong>Ask Codex</strong>
-              Use $track to coordinate the onboarding beta. Reuse the product work that already exists, split independent work, keep one development map, and stop at a verified beta release.
+              $track으로 온보딩 베타 출시를 진행해 주세요. 끝난 작업은 재사용하고, 서로 막지 않는 일은 병렬로 진행하세요. 하나의 작업 맵을 계속 갱신하면서 출시 조건을 모두 확인할 때까지 이어가 주세요.
             </aside>
             <div class="map-panel">
-              <div class="map-toolbar"><span>Living development map</span><span class="map-mode">Mermaid / sequence</span><span class="map-scroll-hint">Sequence · scroll →</span></div>
+              <div class="map-toolbar"><span>Work map</span><span class="map-mode">Mermaid / sequence</span><span class="map-scroll-hint">Sequence · 좌우 스크롤 →</span></div>
               <div class="diagram-wrap">
                 <pre class="mermaid">
 sequenceDiagram
-    participant G as Goal / scope
-    participant P as Product
-    participant M as Metrics
-    participant S as Support
-    participant I as Integration gate
-    G->>G: Accept minimal beta scope
-    par Product flow
-        G->>P: Start product work
-        P-->>I: Submit flow evidence
-    and Success metrics
-        G->>M: Reuse completed metrics
-        M-->>I: Submit metrics evidence
-    and Support readiness
-        G->>S: Start support preparation
-        S-->>I: Submit readiness evidence
+    participant G as 목표 / 범위
+    participant P as 제품
+    participant M as 지표
+    participant S as 지원
+    participant I as 출시 점검
+    G->>G: 최소 베타 범위 확정
+    par 제품 흐름
+        G->>P: 제품 작업 시작
+        P-->>I: 흐름 검증 결과 전달
+    and 성공 지표
+        G->>M: 완료한 지표 작업 재사용
+        M-->>I: 지표 검증 결과 전달
+    and 지원 준비
+        G->>S: 지원 준비 시작
+        S-->>I: 준비 상태 전달
     end
-    Note over P,S: Independent tracks move together
-    I->>I: Inspect all required evidence
-    alt Evidence passes
-        I-->>G: Unlock beta release
-    else Issue found
-        I-->>P: Return affected work only
-        P-->>I: Resubmit verified evidence
+    Note over P,S: 막히지 않는 작업은 병렬 진행
+    I->>I: 출시 조건 모두 점검
+    alt 점검 통과
+        I-->>G: 베타 출시 승인
+    else 문제 발견
+        I-->>P: 문제 있는 작업만 다시 진행
+        P-->>I: 검증 결과 다시 전달
     end
                 </pre>
               </div>
-              <p class="map-note">Each vertical lane keeps one workstream visible over time. The beta unlocks only after all three tracks reach the integration gate; a failed check returns only the affected work.</p>
+              <p class="map-note">각 레인은 목표·제품·지표·지원처럼 역할별 작업 흐름을 보여줍니다. 세 작업의 검증 결과가 출시 점검에 모두 모여야 베타를 내보낼 수 있습니다. 문제가 생기면 전체가 아니라 해당 작업만 다시 확인합니다.</p>
             </div>
           </div>
         </div>
@@ -442,29 +446,29 @@ sequenceDiagram
       <section>
         <div class="shell gate-grid">
           <div class="gate-copy">
-            <p class="label">The scope gate</p>
-            <h2>New work must earn its place.</h2>
-            <p>Every new task, session, or expansion is checked against the current goal and observed need. Track keeps ambition visible without turning every idea into a commitment.</p>
+            <p class="label">Scope control</p>
+            <h2>할 일을 늘리기 전에, 지금 필요한지 먼저 봅니다.</h2>
+            <p>새 작업이나 범위 변경은 현재 목표에 실제로 필요한지 먼저 확인합니다. 좋은 아이디어라도 이번 릴리스에 필요 없다면 기록만 남기고 미룹니다. Track은 할 일을 늘리기보다, 끝낼 수 있는 범위를 지킵니다.</p>
           </div>
           <ul class="gate-list">
-            <li><b>Pass</b><span>Proceed at the smallest useful scope.</span></li>
-            <li><b>Reduce</b><span>Shrink the work, then check it again.</span></li>
-            <li><b>Hold</b><span>Keep it visible, but do not execute it now.</span></li>
+            <li><b>Start</b><span>지금 필요한 최소 범위로 시작합니다.</span></li>
+            <li><b>Trim</b><span>더 작게 나눠 다시 판단합니다.</span></li>
+            <li><b>Hold</b><span>기록은 남기고, 이번에는 하지 않습니다.</span></li>
           </ul>
         </div>
       </section>
 
       <section>
         <div class="shell install">
-          <p class="eyebrow">Start with the map</p>
-          <h2>Give Track a real goal, not a perfect plan.</h2>
-          <pre><code>Use $track to turn this project into a living development map and coordinate it to completion.</code></pre>
+          <p class="eyebrow">Start with a real goal</p>
+          <h2>완벽한 계획은 필요 없습니다. 목표부터 시작하세요.</h2>
+          <pre><code>$track으로 이 프로젝트의 작업 맵을 만들고 끝까지 진행해 주세요. 서로 막지 않는 일은 병렬로 돌리고, 의존성·검증 조건·보류할 작업을 계속 갱신해 주세요.</code></pre>
         </div>
       </section>
     </main>
 
     <footer>
-      <div class="shell"><span>Track / v0.1.6</span><span>Map the work. Track it to done.</span></div>
+      <div class="shell"><span>Track / v0.1.6</span><span>복잡한 작업을 끝까지 움직입니다.</span></div>
     </footer>
 
     <script type="module">
@@ -482,7 +486,7 @@ sequenceDiagram
           lineColor: "#5c7479",
           secondaryColor: "#fff0c9",
           tertiaryColor: "#e5f0ed",
-          fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          fontFamily: "Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
           fontSize: "15px"
         },
         sequence: {
