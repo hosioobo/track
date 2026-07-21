@@ -283,7 +283,8 @@
       @media (max-width: 560px) {
         .shell { width: min(100% - 28px, 1180px); }
         nav { min-height: 60px; }
-        .nav-links a:not(:last-child) { display: none; }
+        .nav-links { gap: 14px; }
+        .nav-links a:not(.github-link):not(:last-child) { display: none; }
         .hero { padding-top: 120px; }
         .hero-mark { inset: 18px -4px auto 34%; height: 76px; gap: 10px; opacity: 0.58; }
         .hero-mark i { border-top-width: 8px; }
@@ -315,7 +316,8 @@
         <div class="nav-links">
           <a href="#method">Method</a>
           <a href="#example">Example</a>
-          <a href="README.md">Readme</a>
+          <a href="https://github.com/hosioobo/track#readme">Readme</a>
+          <a class="github-link" href="https://github.com/hosioobo/track">GitHub</a>
           <a href="index.ko.html" hreflang="ko" lang="ko">한국어</a>
         </div>
       </nav>
@@ -330,7 +332,7 @@
           <p class="lead">Put the critical path first. Run independent work in parallel. Park what can wait. When plans change, Track keeps the goal fixed and the work moving until the result checks out.</p>
           <div class="actions">
             <a class="button" href="#example">See Track in action</a>
-            <a class="button secondary" href="SKILL.md">Explore the skill</a>
+            <a class="button secondary" href="https://github.com/hosioobo/track/blob/main/SKILL.md">Explore the skill</a>
           </div>
         </div>
         <aside class="dispatch" aria-label="Current work map">
@@ -464,7 +466,7 @@ sequenceDiagram
     </main>
 
     <footer>
-      <div class="shell"><span>Track / v0.1.9</span><span>Move complex work all the way to done.</span></div>
+      <div class="shell"><span>Track / v0.1.10</span><span>Move complex work all the way to done. · <a href="https://github.com/hosioobo/track">GitHub</a></span></div>
     </footer>
 
     <script type="module">

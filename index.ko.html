@@ -287,7 +287,8 @@
       @media (max-width: 560px) {
         .shell { width: min(100% - 28px, 1180px); }
         nav { min-height: 60px; }
-        .nav-links a:not(:last-child) { display: none; }
+        .nav-links { gap: 14px; }
+        .nav-links a:not(.github-link):not(:last-child) { display: none; }
         .hero { padding-top: 120px; }
         .hero-mark { inset: 18px -4px auto 34%; height: 76px; gap: 10px; opacity: 0.58; }
         .hero-mark i { border-top-width: 8px; }
@@ -319,7 +320,8 @@
         <div class="nav-links">
           <a href="#method">Method</a>
           <a href="#example">Example</a>
-          <a href="README.md">README</a>
+          <a href="https://github.com/hosioobo/track#readme">README</a>
+          <a class="github-link" href="https://github.com/hosioobo/track">GitHub</a>
           <a href="index.html" hreflang="en" lang="en">English</a>
         </div>
       </nav>
@@ -334,7 +336,7 @@
           <p class="lead">먼저 끝내야 할 일, 지금 병렬로 진행할 일, 아직 미뤄둘 일을 한눈에 정리하세요. 계획이 바뀌어도 목표를 놓치지 않고, 결과를 확인할 때까지 밀고 나갑니다.</p>
           <div class="actions">
             <a class="button" href="#example">트랙 예시 보기</a>
-            <a class="button secondary" href="SKILL.md">스킬 살펴보기</a>
+            <a class="button secondary" href="https://github.com/hosioobo/track/blob/main/SKILL.md">스킬 살펴보기</a>
           </div>
         </div>
         <aside class="dispatch" aria-label="현재 작업 지도">
@@ -468,7 +470,7 @@ sequenceDiagram
     </main>
 
     <footer>
-      <div class="shell"><span>Track / v0.1.9</span><span>복잡한 작업을 끝까지 움직입니다.</span></div>
+      <div class="shell"><span>Track / v0.1.10</span><span>복잡한 작업을 끝까지 움직입니다. · <a href="https://github.com/hosioobo/track">GitHub</a></span></div>
     </footer>
 
     <script type="module">
