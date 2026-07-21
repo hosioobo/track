@@ -4,7 +4,7 @@ Track is a lightweight, human-guided orchestration skill for complex work. It
 keeps the goal stable while tasks, dependencies, tracks, and working sessions
 change around it.
 
-**Version:** 0.1.6
+**Version:** 0.1.7
 **Codex skill:** `$track`
 
 [Open the English landing page](index.html) · [한국어 랜딩 페이지](index.ko.html) · [Read the skill instructions](SKILL.md)
