@@ -4,18 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="먼저 끝내야 할 일, 지금 병렬로 진행할 일, 아직 미뤄둘 일을 한눈에 정리하세요. 계획이 바뀌어도 목표를 놓치지 않고, 결과를 확인할 때까지 밀고 나갑니다.">
-    <meta name="theme-color" content="#dce7e5">
+    <meta name="theme-color" content="#070707">
     <title>Track — 복잡한 작업도, 기다리지 말고 끝내세요.</title>
     <link rel="alternate" hreflang="en" href="index.html">
     <link rel="alternate" hreflang="ko" href="index.ko.html">
     <link rel="alternate" hreflang="x-default" href="index.html">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23dce7e5'/%3E%3Cpath d='M9 35h12V21H9zm17 0h12V10H26zm17 0h12V25H43z' fill='%2314292f'/%3E%3Cpath d='M26 35h12V10H26z' fill='%23d94b2b'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070707'/%3E%3Cpath d='M9 39h12V25H9zm17 0h12V14H26zm17 0h12V29H43z' fill='%23f5f5f5'/%3E%3Cpath d='M26 39h12V14H26z' fill='%23747474'/%3E%3C/svg%3E">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ko_KR">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:title" content="Track — 복잡한 작업도, 기다리지 말고 끝내세요.">
     <meta property="og:description" content="먼저 끝낼 일, 지금 병렬로 진행할 일, 아직 미뤄둘 일을 한눈에 정리하세요. 계획이 바뀌어도 목표를 놓치지 않고 끝까지 밀고 나갑니다.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png?v=3">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Track — 복잡한 작업도, 기다리지 말고 끝내세요.">
     <meta name="twitter:description" content="먼저 끝낼 일, 지금 병렬로 진행할 일, 아직 미뤄둘 일을 한눈에 정리하세요. 계획이 바뀌어도 목표를 놓치지 않고 끝까지 밀고 나갑니다.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png?v=3">
     <meta name="twitter:image:alt" content="Track — 복잡한 작업도, 기다리지 말고 끝내세요.">
     <style>
       :root {
@@ -310,6 +310,8 @@
         *, *::before, *::after { transition: none !important; }
       }
     </style>
+    <link rel="stylesheet" href="track.css?v=5">
+    <script src="track-motion.js?v=8" defer></script>
   </head>
   <body>
     <header>
@@ -329,7 +331,10 @@
 
     <main id="top">
       <div class="shell hero">
-        <div class="hero-mark" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="hero-mark" aria-hidden="true">
+          <canvas class="track-field"></canvas>
+          <div class="motion-caption"><span></span>3 tracks moving</div>
+        </div>
         <div class="hero-copy">
           <p class="eyebrow">Goal-first work orchestration</p>
           <h1>복잡한 작업도,<span>기다리지 말고<br>끝내세요.</span></h1>
@@ -379,16 +384,19 @@
           </div>
           <div class="principles">
             <article class="principle">
+              <span class="motion-icon goal-motion" aria-hidden="true"><i></i></span>
               <b>Goal / 01</b>
               <h3>계획이 달라져도, 목표를 놓치지 않습니다.</h3>
               <p>작업 순서와 실행 단위는 상황에 맞게 조정하되, 최종 목표를 잊지 않습니다.</p>
             </article>
             <article class="principle">
+              <span class="motion-icon dependency-motion" aria-hidden="true"><i></i><i></i><i></i></span>
               <b>Dependency / 02</b>
               <h3>막히지 않는 일부터 병렬로 돌립니다.</h3>
               <p>독립적인 작업은 동시에 진행하고, 함께 확인해야 할 일은 검증 결과가 모일 때까지 기다립니다.</p>
             </article>
             <article class="principle">
+              <span class="motion-icon scope-motion" aria-hidden="true"><i></i></span>
               <b>Gate / 03</b>
               <h3>Task마다 점검해, 과작업을 막습니다.</h3>
               <p>새 Task가 목표에 꼭 필요한지 확인하고, 필요 이상으로 커지면 범위를 줄이거나 보류합니다.</p>
@@ -453,9 +461,9 @@ sequenceDiagram
             <p>Track에는 모든 새 Task를 실행 전에 점검하는 built-in Gate가 있습니다. 목표에 꼭 필요하지 않거나 범위가 과한 일은 통과시키지 않고, 줄이거나 보류합니다. 프로젝트에는 지금 끝내야 할 일만 남습니다.</p>
           </div>
           <ul class="gate-list">
-            <li><b>Start</b><span>지금 필요한 최소 범위로 시작합니다.</span></li>
-            <li><b>Trim</b><span>더 작게 나눠 다시 판단합니다.</span></li>
-            <li><b>Hold</b><span>기록은 남기고, 이번에는 하지 않습니다.</span></li>
+            <li><b>Start</b><span>지금 필요한 최소 범위로 시작합니다.</span><span class="list-motion start-motion" aria-hidden="true"><i></i></span></li>
+            <li><b>Trim</b><span>더 작게 나눠 다시 판단합니다.</span><span class="list-motion trim-motion" aria-hidden="true"><i></i></span></li>
+            <li><b>Hold</b><span>기록은 남기고, 이번에는 하지 않습니다.</span><span class="list-motion hold-motion" aria-hidden="true"><i></i></span></li>
           </ul>
         </div>
       </section>
@@ -481,13 +489,28 @@ sequenceDiagram
         securityLevel: "strict",
         theme: "base",
         themeVariables: {
-          background: "#f7faf9",
-          primaryColor: "#e8edff",
-          primaryTextColor: "#14292f",
-          primaryBorderColor: "#2949ba",
-          lineColor: "#5c7479",
-          secondaryColor: "#fff0c9",
-          tertiaryColor: "#e5f0ed",
+          background: "#101010",
+          primaryColor: "#171717",
+          primaryTextColor: "#f2f2f2",
+          primaryBorderColor: "#555555",
+          lineColor: "#808080",
+          secondaryColor: "#1c1c1c",
+          tertiaryColor: "#111111",
+          actorBkg: "#171717",
+          actorBorder: "#555555",
+          actorTextColor: "#f2f2f2",
+          actorLineColor: "#3f3f3f",
+          signalColor: "#aaaaaa",
+          signalTextColor: "#d8d8d8",
+          labelBoxBkgColor: "#171717",
+          labelBoxBorderColor: "#555555",
+          labelTextColor: "#f2f2f2",
+          loopTextColor: "#d8d8d8",
+          noteBkgColor: "#202020",
+          noteBorderColor: "#5f5f5f",
+          noteTextColor: "#f2f2f2",
+          activationBkgColor: "#242424",
+          activationBorderColor: "#777777",
           fontFamily: "Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
           fontSize: "15px"
         },

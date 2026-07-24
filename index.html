@@ -4,18 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Put the critical path first. Run independent work in parallel. Park what can wait. Track keeps the goal fixed and the work moving until the result checks out.">
-    <meta name="theme-color" content="#dce7e5">
+    <meta name="theme-color" content="#070707">
     <title>Track — Complex work. Stop waiting. Finish it.</title>
     <link rel="alternate" hreflang="en" href="index.html">
     <link rel="alternate" hreflang="ko" href="index.ko.html">
     <link rel="alternate" hreflang="x-default" href="index.html">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23dce7e5'/%3E%3Cpath d='M9 35h12V21H9zm17 0h12V10H26zm17 0h12V25H43z' fill='%2314292f'/%3E%3Cpath d='M26 35h12V10H26z' fill='%23d94b2b'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070707'/%3E%3Cpath d='M9 39h12V25H9zm17 0h12V14H26zm17 0h12V29H43z' fill='%23f5f5f5'/%3E%3Cpath d='M26 39h12V14H26z' fill='%23747474'/%3E%3C/svg%3E">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ko_KR">
     <meta property="og:title" content="Track — Complex work. Stop waiting. Finish it.">
     <meta property="og:description" content="Put the critical path first, run independent work in parallel, and park what can wait. Keep complex work moving until the result checks out.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png?v=3">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Track — Complex work. Stop waiting. Finish it.">
     <meta name="twitter:description" content="Put the critical path first, run independent work in parallel, and park what can wait. Keep complex work moving until the result checks out.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/hosioobo/track/main/og-image.png?v=3">
     <meta name="twitter:image:alt" content="Track — Track the work. Finish what you started.">
     <style>
       :root {
@@ -306,6 +306,8 @@
         *, *::before, *::after { transition: none !important; }
       }
     </style>
+    <link rel="stylesheet" href="track.css?v=5">
+    <script src="track-motion.js?v=8" defer></script>
   </head>
   <body>
     <header>
@@ -325,7 +327,10 @@
 
     <main id="top">
       <div class="shell hero">
-        <div class="hero-mark" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="hero-mark" aria-hidden="true">
+          <canvas class="track-field"></canvas>
+          <div class="motion-caption"><span></span>3 tracks moving</div>
+        </div>
         <div class="hero-copy">
           <p class="eyebrow">Goal-first work orchestration</p>
           <h1>Complex work.<span>Stop waiting.<br>Finish it.</span></h1>
@@ -375,16 +380,19 @@
           </div>
           <div class="principles">
             <article class="principle">
+              <span class="motion-icon goal-motion" aria-hidden="true"><i></i></span>
               <b>Goal / 01</b>
               <h3>Change the plan. Keep the goal.</h3>
               <p>Reorder tasks and working sessions as needed without losing sight of the outcome.</p>
             </article>
             <article class="principle">
+              <span class="motion-icon dependency-motion" aria-hidden="true"><i></i><i></i><i></i></span>
               <b>Dependency / 02</b>
               <h3>Run unblocked work in parallel.</h3>
               <p>Independent tasks move together. Shared checkpoints wait until every required result is in.</p>
             </article>
             <article class="principle">
+              <span class="motion-icon scope-motion" aria-hidden="true"><i></i></span>
               <b>Gate / 03</b>
               <h3>Every task earns its place.</h3>
               <p>Before new work starts, check that it serves the goal. Trim or park anything that grows past what the outcome needs.</p>
@@ -449,9 +457,9 @@ sequenceDiagram
             <p>Track’s built-in gate checks every new task before it starts. Work that doesn’t serve the goal—or has grown beyond what the outcome needs—gets trimmed or held. What remains is work worth finishing now.</p>
           </div>
           <ul class="gate-list">
-            <li><b>Start</b><span>Begin with the smallest scope that delivers the outcome.</span></li>
-            <li><b>Trim</b><span>Make it smaller, then check again.</span></li>
-            <li><b>Hold</b><span>Keep it visible. Don’t start it yet.</span></li>
+            <li><b>Start</b><span>Begin with the smallest scope that delivers the outcome.</span><span class="list-motion start-motion" aria-hidden="true"><i></i></span></li>
+            <li><b>Trim</b><span>Make it smaller, then check again.</span><span class="list-motion trim-motion" aria-hidden="true"><i></i></span></li>
+            <li><b>Hold</b><span>Keep it visible. Don’t start it yet.</span><span class="list-motion hold-motion" aria-hidden="true"><i></i></span></li>
           </ul>
         </div>
       </section>
@@ -477,13 +485,28 @@ sequenceDiagram
         securityLevel: "strict",
         theme: "base",
         themeVariables: {
-          background: "#f7faf9",
-          primaryColor: "#e8edff",
-          primaryTextColor: "#14292f",
-          primaryBorderColor: "#2949ba",
-          lineColor: "#5c7479",
-          secondaryColor: "#fff0c9",
-          tertiaryColor: "#e5f0ed",
+          background: "#101010",
+          primaryColor: "#171717",
+          primaryTextColor: "#f2f2f2",
+          primaryBorderColor: "#555555",
+          lineColor: "#808080",
+          secondaryColor: "#1c1c1c",
+          tertiaryColor: "#111111",
+          actorBkg: "#171717",
+          actorBorder: "#555555",
+          actorTextColor: "#f2f2f2",
+          actorLineColor: "#3f3f3f",
+          signalColor: "#aaaaaa",
+          signalTextColor: "#d8d8d8",
+          labelBoxBkgColor: "#171717",
+          labelBoxBorderColor: "#555555",
+          labelTextColor: "#f2f2f2",
+          loopTextColor: "#d8d8d8",
+          noteBkgColor: "#202020",
+          noteBorderColor: "#5f5f5f",
+          noteTextColor: "#f2f2f2",
+          activationBkgColor: "#242424",
+          activationBorderColor: "#777777",
           fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
           fontSize: "15px"
         },
